@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special Website</title>
     <style>
-        /* Background with hearts */
+        /* Background with image */
         body {
-            background-color: #c061b6;
+            background-image: url('Brightest-stars-in-the-Northern-Hemisphere.webp'); /* Replace 'background.jpg' with your image file */
+            background-size: cover; /* Ensures the image covers the entire screen */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
             font-family: Arial, sans-serif;
             display: flex;
             align-items: center;
@@ -70,9 +73,9 @@
         /* Floating teddy bear styling */
         .floating-teddy {
             position: absolute;
-            bottom: 20px; /* Position at the bottom */
-            right: 20px; /* Adjust as needed */
-            width: 100px; /* Adjust size as desired */
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
             animation: float-teddy 4s ease-in-out infinite;
             z-index: 1;
         }
@@ -84,7 +87,6 @@
             100% { transform: translateY(0); }
         }
 
-        /* Image styling */
         .image-container {
             width: 80%;
             max-width: 600px;
@@ -138,7 +140,6 @@
             top: 0;
         }
 
-        /* Inner play icon */
         .play-icon {
             transform: rotate(-45deg);
             color: white;
@@ -168,7 +169,7 @@
         <span class="play-icon">▶️</span> <!-- Play icon will toggle -->
     </div>
 
-    <audio id="audio-player" src="videoplayback (1).mp3"></audio>
+    <audio id="audio-player" src="song.mp3"></audio>
 
     <script>
         const audio = document.getElementById('audio-player');
@@ -184,7 +185,6 @@
             }
         }
 
-        // Handle errors in image or audio loading
         document.getElementById('main-image').onerror = () => {
             alert("Image not found. Please check the image path.");
         };
