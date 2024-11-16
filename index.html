@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Website</title>
+    <style>
+        /* Background with hearts */
+        body {
+            background-color: #c061b6;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .heart-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            z-index: -1;
+        }
+
+        .heart {
+            width: 30px;
+            height: 30px;
+            background-color: #7f2714;
+            position: relative;
+            transform: rotate(45deg);
+            margin: 5px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #7f2714;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 15px;
+            top: 0;
+        }
+
+        /* Floating animation for hearts */
+        @keyframes float {
+            0% { transform: translateY(0) rotate(45deg); }
+            50% { transform: translateY(-20px) rotate(45deg); }
+            100% { transform: translateY(0) rotate(45deg); }
+        }
+
+        /* Floating teddy bear styling */
+        .floating-teddy {
+            position: absolute;
+            bottom: 20px; /* Position at the bottom */
+            right: 20px; /* Adjust as needed */
+            width: 100px; /* Adjust size as desired */
+            animation: float-teddy 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        /* Teddy bear floating animation */
+        @keyframes float-teddy {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Image styling */
+        .image-container {
+            width: 80%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Heart-shaped play/stop button */
+        .heart-button {
+            width: 50px;
+            height: 50px;
+            background-color: #7f2714;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transform: rotate(45deg);
+            margin-top: 20px;
+        }
+
+        .heart-button:before,
+        .heart-button:after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #7f2714;
+            border-radius: 50%;
+        }
+
+        .heart-button:before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart-button:after {
+            left: 25px;
+            top: 0;
+        }
+
+        /* Inner play icon */
+        .play-icon {
+            transform: rotate(-45deg);
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Heart background -->
+    <div class="heart-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <!-- Floating teddy bear image -->
+    <img src="istockphoto-1391885511-612x612-Photoroom.png" alt="Floating Teddy Bear" class="floating-teddy">
+
+    <!-- Image Section with Container -->
+    <div class="image-container">
+        <img src="2023-11-19_b~Chw4UjcxT2twZTdSYndzcUdOS0ZsancuMTAyMF8xEikSGjhSNzFPa3BlN1Jid3NxR05LRmxqdy4xMDIwGgAaADIBBEgBUB5gAQ.jpeg" alt="Special Person" class="main-image" id="main-image">
+    </div>
+
+    <!-- Audio Section -->
+    <div class="heart-button" onclick="togglePlay()">
+        <span class="play-icon">▶️</span> <!-- Play icon will toggle -->
+    </div>
+
+    <audio id="audio-player" src="videoplayback (1).mp3"></audio>
+
+    <script>
+        const audio = document.getElementById('audio-player');
+        const playIcon = document.querySelector('.play-icon');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.textContent = '⏸️'; // Change to pause icon
+            } else {
+                audio.pause();
+                playIcon.textContent = '▶️'; // Change back to play icon
+            }
+        }
+
+        // Handle errors in image or audio loading
+        document.getElementById('main-image').onerror = () => {
+            alert("Image not found. Please check the image path.");
+        };
+
+        audio.onerror = () => {
+            alert("Audio file not found. Please check the audio path.");
+        };
+    </script>
+
+</body>
+</html>
